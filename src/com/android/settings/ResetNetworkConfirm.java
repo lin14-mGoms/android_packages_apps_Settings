@@ -23,6 +23,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkPolicyManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
@@ -108,6 +109,8 @@ public class ResetNetworkConfirm extends OptionsMenuFragment {
 
             Settings.Global.putInt(context.getContentResolver(),
                     Settings.Global.CAPTIVE_PORTAL_MODE, 1);
+
+            SystemProperties.set("persist.privacy.iptab_blk", "0");
 
             Toast.makeText(context, R.string.reset_network_complete_toast, Toast.LENGTH_SHORT)
                     .show();
